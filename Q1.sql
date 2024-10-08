@@ -1,3 +1,5 @@
+-- CREATE TABLES
+
 CREATE TABLE students (
     id INT PRIMARY KEY,
     first_name VARCHAR(100),
@@ -29,3 +31,20 @@ CREATE TABLE enrollments (
     FOREIGN KEY (student_id) REFERENCES students(id),
     FOREIGN KEY (course_id) REFERENCES courses(id)
 );
+
+-- INSERT DATA
+-- Insert Students
+
+INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES
+('Cole', 'Caufield', 'colecaufield22@gmail.com', '2019-06-21'),
+('Nick', 'Suzuki', 'nicksuzuki14@gmail.com', '2017-06-23'),
+('Juraj', 'Slafkovsky', 'jurajslaf20@gmail.com' '2022-07-8'),
+('Lane', 'Hutson', 'lanehutson48@gmail.com', '2024-10-09'),
+('Kaiden', 'Guhle', 'kaidenguhle21@gmail.com', '2022-03-09');
+
+INSERT INTO professors (first_name, last_name, department) VALUES
+('Martin', 'St.Louis', 'Intro to head coaching'),
+('Kent', 'Hughes', 'Intro to Managing'),
+('Geoff', 'Molson' 'Entrepreneurship 1001'),
+('Jeff', 'Gorton', 'Entrepreneurship 2200');
+
