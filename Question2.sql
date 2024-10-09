@@ -37,10 +37,10 @@ FOREIGN KEY (product_id) REFERENCES products(id)
 
 INSERT INTO products (product_name, price, stock_quantity) VALUES
 ('Hoodie', 59.99, 38),
-('Crewneck' 49.99, 26),
-('T-Shirt' 24.99, 21),
-('Jeans' 64.99, 112),
-('Hat' 39.99, 45);
+('Crewneck', 49.99, 26),
+('T-Shirt', 24.99, 21),
+('Jeans', 64.99, 112),
+('Hat', 39.99, 45);
 
 -- Insert Customers
 INSERT INTO customers (first_name, last_name, email) VALUES
@@ -69,3 +69,21 @@ INSERT INTO order_items (order_id, product_id, quantity) VALUES
 (4, 3, 1),
 (5, 4, 3),
 (5, 5, 1);
+
+-- Retrieve Names and Quantities Of Products
+
+SELECT product_name, stock_quantity
+FROM products;
+
+-- Getting Info From Placed Orders
+SELECT p.product_name, oi.quantity
+FROM order_items oi
+JOIN products p ON oi.product_id = p.id
+WHERE oi.order_id = 1;
+
+-- Retrieve Orders Placed By A Specific Customer
+SELECT o.id AS order_id, p.product_name, oi.quantity
+FROM orders o
+JOIN order_items oi ON o.id = oi.order_id
+JOIN products p ON oi.product_id = p.id
+WHERE o.customer_id = 1;
