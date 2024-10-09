@@ -64,12 +64,30 @@ INSERT INTO courses (course_name, course_description, professor_id) VALUES
 INSERT INTO enrollments (student_id, course_id, enrollment_date) VALUES
 (1, 1, '2024-10-09'),
 (2, 1, '2024-10-09'),
-(3, 2, '2024-10-09'),
+(3, 1, '2024-10-09'),
 (4, 3, '2024-10-09'),
-(5, 1, '2024-10-09');
+(5, 2, '2024-10-09');
 
+-- Retrieve Students From Offence Course
 SELECT CONCAT(s.first_name, ' ', s.last_name) as full_name
 FROM students s
 JOIN enrollments e ON s.id = e.student_id
 JOIN courses c ON e.course_id = c.id
 WHERE c.course_name = 'Offence';
+-- Retrieve Courses And Professors To That Course
+SELECT c.course_name, CONCAT(p.first_name, ' ', p.last_name) AS professor_full_name
+FROM courses c
+JOIN professors p ON c.professor_id = p.id;
+-- Retrieve Courses That Have Students Enrolled
+SELECT DISTINCT c.course_name
+FROM courses c
+JOIN enrollments e ON c.id = e.course_id;
+-- Changing Student Email
+UPDATE students
+SET email = 'jurajslafkovsky20@gmail.com'
+WHERE id = 3;
+-- Delete The "Power-Play" Course
+DELETE FROM enrollments
+WHERE student_id = 4 AND course_id = 3;
+
+
