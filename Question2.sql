@@ -87,3 +87,19 @@ FROM orders o
 JOIN order_items oi ON o.id = oi.order_id
 JOIN products p ON oi.product_id = p.id
 WHERE o.customer_id = 1;
+
+-- Update Data (Reduce Stock)
+UPDATE products
+SET stock_quantity = stock_quantity - 1
+WHERE id = 1;
+
+UPDATE products
+SET stock_quantity = stock_quantity - 2
+WHERE id = 2;
+
+-- Deleting Data
+DELETE FROM order_items
+WHERE order_id = 2;
+
+DELETE FROM orders
+WHERE id = 2;
